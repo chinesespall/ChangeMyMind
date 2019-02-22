@@ -1,0 +1,28 @@
+<div class="home-page">
+
+  <div class="banner" *appShowAuthed="false">
+    <div class="container">
+      <h1 class="logo-font">#ChangeMyMind</h1>
+      <p>Try to change my mind!</p>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="feed-toggle">
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item" [hidden]="!listConfig.filters.tag">
+              <a class="nav-link active">
+                <i class="ion-pound"></i> {{ listConfig.filters.tag }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div style="text-align: center;">
+          <app-article-list [limit]="1" [config]="listConfig"></app-article-list>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

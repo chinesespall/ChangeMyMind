@@ -1,0 +1,47 @@
+<app-article-preview
+  *ngFor="let article of results"
+  [article]="article">
+</app-article-preview>
+
+<div class="app-article-preview"
+  [hidden]="!loading">
+  Loading thoughts...
+</div>
+
+<div class="app-article-preview"
+  [hidden]="loading || results.length">
+  No thoughts are here... yet.
+</div>
+
+<div style="display: inline-block;">
+  <ng-container *ngIf="currentPage>1">
+    <p class="page-item" 
+    [ngClass]="{'active': pageNumber === currentPage}"
+    *ngFor="let pageNumber of [currentPage-1]"
+    (click)="setPageTo(pageNumber)"><img src="https://cdn0.iconfinder.com/data/icons/traffic/500/va0024-512.png" height="10%" width="10%"> </p>
+  </ng-container>
+</div>
+
+<div style="display: inline-block;">
+  <ng-container *ngIf="currentPage<500">
+    <p class="page-item" 
+    [ngClass]="{'active': pageNumber === currentPage}"
+    *ngFor="let pageNumber of [currentPage+1]"
+    (click)="setPageTo(pageNumber)"><img src="https://cdn0.iconfinder.com/data/icons/traffic/500/va0026-512.png" height="10%" width="10%"> </p>
+</ng-container>
+</div>
+
+<nav [hidden]="loading || totalPages.length <= 1">
+  <ul class="pagination">
+
+    <li class="page-item"
+      [ngClass]="{'active': pageNumber === currentPage}"
+      *ngFor="let pageNumber of totalPages"
+      (click)="setPageTo(pageNumber)">
+
+      <a class="page-link" >{{ pageNumber }}</a>
+
+    </li>
+
+  </ul>
+</nav>
